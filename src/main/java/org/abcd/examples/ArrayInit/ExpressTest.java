@@ -15,7 +15,7 @@ import org.antlr.v4.runtime.tree.*;
 public class ExpressTest {
     public static void main(String[] args) throws Exception {
         // create a CharStream that reads from standard input
-        ANTLRInputStream input = new ANTLRInputStream("reply_ip != '0.0.0.0' and reply_ip != '255.255.255.255'");
+        ANTLRInputStream input = new ANTLRInputStream("rsp_delay_time BETWEEN app_satisfied_time AND 4*app_satisfied_time AND status_type IN (1, 2, 3)");
 
         // create a lexer that feeds off of input CharStream
         ExpressLexer lexer = new ExpressLexer(input);

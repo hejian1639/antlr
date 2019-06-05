@@ -13,16 +13,51 @@ express : and
         | condition
         ;
 
-and : condition 'and' condition  ;
+and     : condition 'AND' condition
+        | and 'AND' condition
+        ;
+
 condition   : unequal
-            | equal ;
+            | equal
+            | in
+            | compare
+            | between
+            ;
 
 unequal : ID '!=' STRING
         | ID '!=' INT
+        | ID '!=' ID
         ;
-equal : ID '=' STRING
-      | ID '=' INT
-      ;
+equal   : ID '=' STRING
+        | ID '=' INT
+        | ID '=' ID
+        ;
+
+compare : calculate '>' INT
+        | calculate '<' INT
+        | calculate '>' ID
+        | calculate '<' ID
+        ;
+
+variable    : ID
+            | INT
+            ;
+
+calculate   : variable
+            | variable '+' variable
+            | variable '-' variable
+            | variable '*' variable
+            | variable '/' variable
+            ;
+
+in      : ID 'IN' '(' array ')' ;
+
+array   : INT
+        | array ',' INT
+        ;
+
+between  : ID 'BETWEEN' calculate 'AND' calculate ;
+
 
 // parser rules start with lowercase letters, lexer rules with uppercase
 INT : [0-9]+ ;             // Define token INT as one or more digits
