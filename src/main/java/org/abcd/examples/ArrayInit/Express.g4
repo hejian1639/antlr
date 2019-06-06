@@ -9,13 +9,18 @@ package org.abcd.examples.ArrayInit;
 
 /** A rule called init that matches comma-separated values between {...}. */
 
-express : and
+
+express : calculate
         | condition
+        | and
+        | or
+        | express 'AND' condition
+        | express 'OR' condition
         ;
 
-and     : condition 'AND' condition
-        | and 'AND' condition
-        ;
+and     : condition 'AND' condition ;
+
+or      : condition 'OR' condition ;
 
 condition   : unequal
             | equal
@@ -33,10 +38,10 @@ equal   : ID '=' STRING
         | ID '=' ID
         ;
 
-compare : calculate '>' INT
-        | calculate '<' INT
-        | calculate '>' ID
-        | calculate '<' ID
+compare : calculate '>' variable
+        | calculate '<' variable
+        | calculate '>=' variable
+        | calculate '<=' variable
         ;
 
 variable    : ID

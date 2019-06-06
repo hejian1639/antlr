@@ -42,6 +42,18 @@ public class ExpressBaseListener implements ExpressListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterOr(ExpressParser.OrContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOr(ExpressParser.OrContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCondition(ExpressParser.ConditionContext ctx) { }
 	/**
 	 * {@inheritDoc}
