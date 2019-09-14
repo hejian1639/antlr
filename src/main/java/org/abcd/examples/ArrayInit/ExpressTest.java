@@ -15,7 +15,7 @@ import org.antlr.v4.runtime.tree.*;
 public class ExpressTest {
     public static void main(String[] args) throws Exception {
         // create a CharStream that reads from standard input
-        ANTLRInputStream input = new ANTLRInputStream("rsp_delay_time BETWEEN app_satisfied_time AND 4*app_satisfied_time AND status_type IN (1, 2, 3)");
+        ANTLRInputStream input = new ANTLRInputStream("up_bit/delt_time");
 
         // create a lexer that feeds off of input CharStream
         ExpressLexer lexer = new ExpressLexer(input);
@@ -29,6 +29,6 @@ public class ExpressTest {
         ParseTree tree = parser.express(); // begin parsing at init rule
         System.out.println(tree.toStringTree(parser)); // print LISP-style tree
         ParseTreeWalker walker = new ParseTreeWalker(); // create standard walker
-        walker.walk(new ExpressBaseListener(), tree); // initiate walk of tree with listener
+        walker.walk(new MyExpressBaseListener(), tree); // initiate walk of tree with listener
     }
 }
