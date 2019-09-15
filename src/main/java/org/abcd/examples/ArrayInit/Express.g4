@@ -3,9 +3,6 @@
  */
 grammar Express;
 
-@header {
-package org.abcd.examples.ArrayInit;
-}
 
 /** A rule called init that matches comma-separated values between {...}. */
 
