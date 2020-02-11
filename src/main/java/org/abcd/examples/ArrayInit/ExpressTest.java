@@ -8,6 +8,8 @@ package org.abcd.examples.ArrayInit; /***
 ***/
 // import ANTLR's runtime libraries
 
+import org.abcd.examples.ExpressLexer;
+import org.abcd.examples.ExpressParser;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.*;
@@ -15,7 +17,7 @@ import org.antlr.v4.runtime.tree.*;
 public class ExpressTest {
     public static void main(String[] args) throws Exception {
         // create a CharStream that reads from standard input
-        ANTLRInputStream input = new ANTLRInputStream("up_bit/delt_time");
+        ANTLRInputStream input = new ANTLRInputStream("rsp_delay_time>4*app_satisfied_time AND status_type IN (1, 2, 3)");
 
         // create a lexer that feeds off of input CharStream
         ExpressLexer lexer = new ExpressLexer(input);

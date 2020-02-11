@@ -35,10 +35,10 @@ equal   : ID '=' STRING
         | ID '=' ID
         ;
 
-compare : calculate '>' variable
-        | calculate '<' variable
-        | calculate '>=' variable
-        | calculate '<=' variable
+compare : calculate '>' calculate
+        | calculate '<' calculate
+        | calculate '>=' calculate
+        | calculate '<=' calculate
         ;
 
 variable    : ID

@@ -7,6 +7,8 @@ package org.abcd.examples.ArrayInit; /***
  * Visit http://www.pragmaticprogrammer.com/titles/tpantlr2 for more book information.
 ***/
 // import ANTLR's runtime libraries
+import org.abcd.examples.ArrayInitLexer;
+import org.abcd.examples.ArrayInitParser;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 
