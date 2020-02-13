@@ -8,8 +8,34 @@ options { tokenVocab=GroovyLexer; }
 /** A rule called init that matches comma-separated values between {...}. */
 
 
-compilationUnit :  TEXT* eval TEXT* ;
+compilationUnit:  TEXT* eval* TEXT* ;
 
-eval    : EVAL_BEGIN EVAL_END ;
+eval: EVAL_BEGIN stat* EVAL_END ;
 
 
+stat:   ID ASSIGN aggregation NEWLINE
+    |   NEWLINE
+    ;
+
+expr:   expr MUL expr
+    |   expr DIV expr
+    |   expr ADD expr
+    |   expr SUB expr
+    |   NUMBER
+    |   ID
+    |   LEFT_BRACKET expr RIGHT_BRACKET
+    ;
+
+judge   :   expr EQUAL expr
+        |   expr UNEQUAL expr
+        ;
+
+aggregation :   ID DOT function
+            |   function
+            ;
+
+function:   COUNT_IF LEFT_BRACKET judge RIGHT_BRACKET
+        |   COUNT
+        |   SUM LEFT_BRACKET expr RIGHT_BRACKET
+        |   AVERAGE LEFT_BRACKET expr RIGHT_BRACKET
+        ;

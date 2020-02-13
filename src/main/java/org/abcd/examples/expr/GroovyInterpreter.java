@@ -20,7 +20,7 @@ import java.io.InputStream;
 
 public class GroovyInterpreter {
     public static void main(String[] args) throws Exception {
-        String inputFile = "app-alert.groovy";
+        String inputFile = "cpu-alert.groovy";
         if (args.length > 0) inputFile = args[0];
         InputStream is = System.in;
         if (inputFile != null) is = new FileInputStream(inputFile);
@@ -31,12 +31,12 @@ public class GroovyInterpreter {
         ParseTree tree = parser.compilationUnit(); // parse
         System.out.println(tree.toStringTree(parser)); // print LISP-style tree
 
-        TokenStreamRewriter rewriter = new TokenStreamRewriter(tokens);
         ParseTreeWalker walker = new ParseTreeWalker(); // create standard walker
-        walker.walk(new GroovyParserBaseListener(), tree); // initiate walk of tree with listener
+        val listener=new GroovyListener(tokens);
+        walker.walk(listener, tree); // initiate walk of tree with listener
 
         // print back ALTERED stream
-        System.out.println(rewriter.getText());
+        System.out.println(listener.rewriter.getText());
 
     }
 }
