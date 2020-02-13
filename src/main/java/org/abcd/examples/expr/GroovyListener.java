@@ -21,5 +21,17 @@ public class GroovyListener extends GroovyParserBaseListener {
         rewriter = new TokenStreamRewriter(tokens);
     }
 
+    @Override
+    public void enterEqual(GroovyParser.EqualContext ctx) {
+        rewriter.replace(ctx.EQUAL().getSymbol(), ".equal(");
+        rewriter.insertAfter(ctx.stop, ")");
+
+    }
+
+    @Override
+    public void enterUnequal(GroovyParser.UnequalContext ctx) {
+        rewriter.replace(ctx.UNEQUAL().getSymbol(), ".unequal(");
+        rewriter.insertAfter(ctx.stop, ")");
+    }
 
 }

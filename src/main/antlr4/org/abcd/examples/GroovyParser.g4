@@ -26,8 +26,8 @@ expr:   expr MUL expr
     |   LEFT_BRACKET expr RIGHT_BRACKET
     ;
 
-judge   :   expr EQUAL expr
-        |   expr UNEQUAL expr
+judge   :   expr EQUAL expr     #equal
+        |   expr UNEQUAL expr   #unequal
         ;
 
 aggregation :   ID DOT function
